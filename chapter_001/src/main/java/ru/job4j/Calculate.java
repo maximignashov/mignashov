@@ -9,7 +9,7 @@ package ru.job4j;
 public class Calculate {
 	/**
 	* Конструктор, вывод строки в консоль.
-	* @param arg - arg.
+	* @param args - the arguments passed to array.
 	*/
 	public static void main(String[] args) {
 		System.out.println("Hello World");
