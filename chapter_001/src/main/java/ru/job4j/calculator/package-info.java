@@ -1,8 +1,8 @@
 /**
-* Пакет для класса Calculate.
+* Пакет для класса Calculator.
 * @author Maxim Ignashov (mailto:ignashov.m@icloud.com)
-* @version $Id$
-* @since 21.03.2017
+* @version 1.0
+* @since 23.03.2017
 */
 
 package ru.job4j;
