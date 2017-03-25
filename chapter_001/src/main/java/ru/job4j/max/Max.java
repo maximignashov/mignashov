@@ -14,7 +14,6 @@ public class Max {
 	* @return максимально число примитивного типа int.
 	*/
 	public int max(int first, int second) {
-		int max = first > second ? first : second;
-		return max;
+		int first > second ? first : second;
 	}
 }
