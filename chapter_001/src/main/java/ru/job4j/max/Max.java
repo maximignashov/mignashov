@@ -24,7 +24,6 @@ public class Max {
 	* @return максимальное число примитивного типа int.
 	*/
 	public int max(int first, int second, int third) {
-		Max max = new Max();
-		return max.max(first, max(second, third));
+		return max(first, max(second, third));
 	}
 }
