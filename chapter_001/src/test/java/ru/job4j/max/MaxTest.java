@@ -45,4 +45,24 @@ public class MaxTest {
         int expected = 1;
         assertThat(result, is(expected));
     }
+    /**
+    * Test third numbers.
+    */
+    @Test
+    public void whenFourAndFiveAndSixThenMaxSix() {
+        Max maximum = new Max();
+        int result = maximum.max(4, 5, 6);
+        int expected = 6;
+        assertThat(result, is(expected));
+    }
+    /**
+    * Test third numbers when two same.
+    */
+    @Test
+    public void whenTenAndFortyAndTenThenMaxForty() {
+        Max maximum = new Max();
+        int result = maximum.max(10, 40, 10);
+        int expected = 40;
+        assertThat(result, is(expected));
+    }
 }
