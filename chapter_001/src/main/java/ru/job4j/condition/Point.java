@@ -3,8 +3,8 @@ package ru.job4j.condition;
 /**
 * Класс, Point описывает точку в системе координат.
 * @author mignashov
-* @since 25.03.2017
-* @version 1
+* @since 27.03.2017
+* @version 2
 */
 public class Point {
 	/**
@@ -16,7 +16,7 @@ public class Point {
 	*/
     private int y;
     /**
-	* Метод Point задает значение переменным класса.
+	* Конструктор задает значение переменным класса.
 	* @param x - ось абсцисс.
 	* @param y - ось ординат.
 	*/
@@ -45,6 +45,14 @@ public class Point {
 	* @return true or false.
 	*/
     public boolean is(int a, int b) {
-    return this.y == a * this.x + b;
+    	return this.y == a * this.x + b;
+	}
+	/**
+	* Расстояние между двумя точками.
+	* @param point - точка класса Point.
+	* @return расстояние между двумя точками.
+	*/
+    public double spacingTo(Point point) {
+    	return Math.sqrt(Math.pow(this.x - point.x, 2) + Math.pow(this.y - point.y, 2));
 	}
 }
