@@ -16,20 +16,8 @@ public class Counter {
 	public int add(int start, int finish) {
 		int result = 0;
 		for (int index = start; index <= finish; index++) {
-			result += even(index);
+			result += index % 2 == 0 ? index : 0;
 		}
 		return result;
-	}
-	/**
-	* Counting even range.
-	* @param num  - number int type.
-	* @return even number.
-	*/
-	public int even(int num) {
-		if (num % 2 == 0) {
-			return num;
-		} else {
-			return 0;
-		}
 	}
 }
