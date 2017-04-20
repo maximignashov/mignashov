@@ -29,28 +29,28 @@ public class Teacher extends Profession {
         this.gender = gender;
     }
     /**
-     * Constructor.
+     * Get field subject.
      * @return subject
      */
     public String getSubject() {
-        return subject;
+        return this.subject;
     }
     /**
-     * Constructor.
+     * Get field formMaster.
      * @return form master
      */
     public boolean isFormMaster() {
         return this.formMaster;
     }
     /**
-     * Constructor.
+     * Get field gender.
      * @return gender
      */
     public String getGender() {
         return this.gender;
     }
     /**
-     * Constructor.
+     * Get field fio.
      * @return fio Teacher from class Profession
      */
     public String getFio() {
@@ -61,9 +61,6 @@ public class Teacher extends Profession {
      * @param pupils - object of class Pupils.
      */
     public void teach(Pupils pupils) {
-        String learnerName;
-        int learnerNumber;
-        learnerName = pupils.getFio();
-        learnerNumber = pupils.getStudyNumber();
+        //Teacher teach pupils
     }
 }

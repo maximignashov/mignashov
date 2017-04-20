@@ -27,21 +27,21 @@ public class Doctor extends Profession {
         this.receptionHours = receptionHours;
     }
     /**
-     * Constructor.
+     * Get field fio.
      * @return fio Doctor from class Profession
      */
     public String getFio() {
         return super.getFio();
     }
     /**
-     * Constructor.
+     * Get field specialisation.
      * @return specialisation
      */
     public String getSpecialisation() {
         return this.specialisation;
     }
     /**
-     * Constructor.
+     * Get field receptionHours.
      * @return receptionHours
      */
     public String getReceptionHours() {
@@ -52,10 +52,6 @@ public class Doctor extends Profession {
      * @param patient - object of class Patient.
      */
     public void treat(Patient patient) {
-        String patientFIO;
-        int patienMedicalCardsNumber;
-
-        patientFIO = patient.getFio();
-        patienMedicalCardsNumber = patient.getMedicalCardsNumber();
+        //Doctor treat patient
     }
 }

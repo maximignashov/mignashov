@@ -27,21 +27,21 @@ public class Engineer extends Profession {
         this.office = office;
     }
     /**
-     * Constructor.
+     * Get field post.
      * @return post
      */
     public String getPost() {
         return this.post;
     }
     /**
-     * Constructor.
+     * Get field office.
      * @return office
      */
     public int getOffice() {
         return this.office;
     }
     /**
-     * Constructor.
+     * Get field fio.
      * @return fio Engineer from class Profession
      */
     public String getFio() {
@@ -52,7 +52,6 @@ public class Engineer extends Profession {
      * @param facility - object of class Facility.
      */
     public void design(Facility facility) {
-        int numberFacility;
-        numberFacility = facility.getNumber();
+        //Engineer design facility
     }
 }
