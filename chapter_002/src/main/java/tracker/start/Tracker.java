@@ -15,7 +15,7 @@ public class Tracker {
     /**
      * Item[] array.
      */
-    private Item[] items = new Item[3];
+    private Item[] items = new Item[100];
     /**
      * position.
      */
