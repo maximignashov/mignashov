@@ -27,8 +27,12 @@ public class StartUi {
         for (String menu : startUi.menu()) {
             System.out.println(menu);
         }
-        String choice = input.ask("Select number: ");
-        doSomething(choice);
+        String choice;
+        do {
+            choice = input.ask("Select number: ");
+            doSomething(choice);
+        } while (!choice.equals("6"));
+
     }
     /**
      * add item.
@@ -37,7 +41,6 @@ public class StartUi {
         String name = input.ask("item user name: ");
         String description = input.ask("item description: ");
         tracker.add(new Task(name, description));
-        init();
     }
     /**
      * show items.
@@ -50,7 +53,6 @@ public class StartUi {
                 System.out.println(" id: " + items.getId());
             }
         }
-        init();
     }
     /**
      * edit item.
@@ -68,7 +70,6 @@ public class StartUi {
         } else {
             System.out.println("can't find any items with id: " + id + ", please try again.");
         }
-        init();
     }
     /**
      * delete item.
@@ -82,7 +83,6 @@ public class StartUi {
         } else {
             System.out.println("can't find any items with id: " + id + ", please try again.");
         }
-        init();
     }
     /**
      * find item by id.
@@ -97,7 +97,6 @@ public class StartUi {
         } else {
             System.out.println("can't find any items with id: " + id + ", please try again.");
         }
-        init();
     }
     /**
      * find item by name.
@@ -118,7 +117,6 @@ public class StartUi {
                 System.out.println("can't find any items with name: " + name + ", please try again.");
             }
         }
-        init();
     }
     /**
      * interface menu.
@@ -141,7 +139,6 @@ public class StartUi {
             System.out.println("Exiting...");
         } else {
             System.out.println("Please type number item menu.");
-            init();
         }
     }
     /**
