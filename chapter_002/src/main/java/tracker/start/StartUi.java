@@ -14,21 +14,36 @@ public class StartUi {
     /**
      * Tracker object.
      */
-    private Tracker tracker = new Tracker();
+    private Tracker tracker;
     /**
      * ConsoleInput object.
      */
-    private ConsoleInput input = new ConsoleInput();
+    private ConsoleInput input;
+    /**
+     * Constructor.
+     */
+    public StartUi() {
+        this.tracker = new Tracker();
+        this.input = new ConsoleInput();
+    }
     /**
      * initialisation.
      */
     public void init() {
-        StartUi startUi = new StartUi();
-        for (String menu : startUi.menu()) {
-            System.out.println(menu);
-        }
         String choice;
+        String[] menu = new String[] {
+            "0. Add new Item",
+                    "1. Show all items",
+                    "2. Edit item",
+                    "3. Delete item",
+                    "4. Find item by Id",
+                    "5. Find items by name",
+                    "6. Exit Program"
+        };
         do {
+            for (String menuItems : menu) {
+                System.out.println(menuItems);
+            }
             choice = input.ask("Select number: ");
             doSomething(choice);
         } while (!choice.equals("6"));
@@ -140,27 +155,5 @@ public class StartUi {
         } else {
             System.out.println("Please type number item menu.");
         }
-    }
-    /**
-     * item menu.
-     * @return String[] array of item menu
-     */
-    private String[] menu() {
-        return new String[] {
-                "0. Add new Item",
-                "1. Show all items",
-                "2. Edit item",
-                "3. Delete item",
-                "4. Find item by Id",
-                "5. Find items by name",
-                "6. Exit Program"
-        };
-    }
-    /**
-     * main method.
-     * @param args default param
-     */
-    public static void main(String[] args) {
-        new StartUi().init();
     }
 }
