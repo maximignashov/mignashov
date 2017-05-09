@@ -156,4 +156,9 @@ public class StartUi {
             System.out.println("Please type number item menu.");
         }
     }
+
+    public static void main(String[] args) {
+        StartUi start = new StartUi();
+        start.init();
+    }
 }
