@@ -21,10 +21,12 @@ public class StartUi {
     private ConsoleInput input;
     /**
      * Constructor.
+     * @param tracker initialisation
+     * @param input initialisation
      */
-    public StartUi() {
-        this.tracker = new Tracker();
-        this.input = new ConsoleInput();
+    public StartUi(Tracker tracker, ConsoleInput input) {
+        this.tracker = tracker;
+        this.input = input;
     }
     /**
      * initialisation.
@@ -161,7 +163,7 @@ public class StartUi {
      * @param args default param
      */
     public static void main(String[] args) {
-        StartUi start = new StartUi();
+        StartUi start = new StartUi(new Tracker(), new ConsoleInput());
         start.init();
     }
 }
