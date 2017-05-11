@@ -16,15 +16,15 @@ public class StartUi {
      */
     private Tracker tracker;
     /**
-     * ConsoleInput object.
+     * Input object.
      */
-    private ConsoleInput input;
+    private Input input;
     /**
      * Constructor.
      * @param tracker initialisation
      * @param input initialisation
      */
-    public StartUi(Tracker tracker, ConsoleInput input) {
+    public StartUi(Tracker tracker, Input input) {
         this.tracker = tracker;
         this.input = input;
     }
