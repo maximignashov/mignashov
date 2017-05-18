@@ -25,7 +25,7 @@ public class StubInputTest {
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
         Tracker tracker = new Tracker();
-        Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});
+        Input input = new StubInput(new String[]{"1", "test name", "desc", "7"});
         new StartUi(tracker, input).init();
         assertThat(tracker.findAll()[0].getName(), is("test name"));
     }
@@ -36,8 +36,8 @@ public class StubInputTest {
     public void whenUserAddNewItemAndUserFindItemByNameThenTrackerHasFindItem() {
         Tracker tracker = new Tracker();
         Input input = new StubInput(new String[]{
-                "0", "test name", "desc",
-                "5", "test name", "6"});
+                "1", "test name", "desc",
+                "6", "test name", "7"});
         new StartUi(tracker, input).init();
         assertThat(tracker.findAll()[0].getName(), is("test name"));
     }
@@ -51,7 +51,7 @@ public class StubInputTest {
         tracker.add(item);
         String id = tracker.findByName("test1")[0].getId();
         Input input = new StubInput(new String[]{
-                "4", id, "6"});
+                "5", id, "7"});
         new StartUi(tracker, input).init();
         assertThat(tracker.findAll()[0].getName(), is("test1"));
     }
@@ -65,7 +65,7 @@ public class StubInputTest {
         tracker.add(item);
         String id = tracker.findByName("test1")[0].getId();
         Input input = new StubInput(new String[]{
-                "2", id, "new test", "new desc", "6"});
+                "3", id, "new test", "new desc", "7"});
         StartUi start = new StartUi(tracker, input);
         start.init();
         assertThat(tracker.findAll()[0].getName(), is("new test"));
@@ -80,7 +80,7 @@ public class StubInputTest {
         tracker.add(item);
         String id = tracker.findByName("test1")[0].getId();
         Input input = new StubInput(new String[]{
-                "3", id, "6"});
+                "4", id, "7"});
         StartUi start = new StartUi(tracker, input);
         start.init();
         assertThat(tracker.findAll()[0], nullValue());
