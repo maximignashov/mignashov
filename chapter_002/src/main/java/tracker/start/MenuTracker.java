@@ -229,7 +229,7 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             for (Item items : tracker.findAll()) {
                 if (items != null) {
-                    System.out.print("name: " + items.getName() + ", ");
+                    System.out.println("name: " + items.getName() + ", ");
                     System.out.print(" description: " + items.getDescription() + ", ");
                     System.out.println(" id: " + items.getId());
                 }
