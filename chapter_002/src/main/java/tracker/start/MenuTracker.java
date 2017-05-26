@@ -131,6 +131,10 @@ public class MenuTracker {
      */
     private UserAction[] actions = new UserAction[8];
     /**
+     * array range.
+     */
+    private int[] ranges = new int[7];
+    /**
      * Constructor.
      * @param tracker initialisation
      * @param input initialisation
@@ -152,6 +156,21 @@ public class MenuTracker {
         this.actions[7] = new ExitTracker();
     }
     /**
+     * Fill values range.
+     */
+    public void fillRange() {
+        for (int index = 0; index != this.actions.length - 1; index++) {
+            this.ranges[index] = index + 1;
+        }
+    }
+    /**
+     * Get values range.
+     * @return int array
+     */
+    public int[] getRanges() {
+        return this.ranges;
+    }
+    /**
      * Select action.
      * @param key int number of menu
      */
@@ -162,6 +181,7 @@ public class MenuTracker {
      * Show all actions menu.
      */
     public void show() {
+        fillRange();
         for (UserAction action : actions) {
             if (action != null) {
                 System.out.println(action.info());
@@ -230,8 +250,8 @@ public class MenuTracker {
             for (Item items : tracker.findAll()) {
                 if (items != null) {
                     System.out.println("name: " + items.getName() + ", ");
-                    System.out.print(" description: " + items.getDescription() + ", ");
-                    System.out.println(" id: " + items.getId());
+                    System.out.println("description: " + items.getDescription() + ", ");
+                    System.out.println("id: " + items.getId());
                 }
             }
         }
@@ -266,9 +286,9 @@ public class MenuTracker {
             String id = input.ask("item id: ");
             Item item = tracker.findById(id);
             if (item != null) {
-                System.out.print("name: " + item.getName() + ", ");
-                System.out.print(" description: " + item.getDescription() + ", ");
-                System.out.println(" id: " + item.getId());
+                System.out.println("name: " + item.getName() + ", ");
+                System.out.println("description: " + item.getDescription() + ", ");
+                System.out.println("id: " + item.getId());
             } else {
                 System.out.println("can't find any items with id: " + id + ", please try again.");
             }
@@ -306,9 +326,9 @@ public class MenuTracker {
             int count = 0;
             for (int index = 0; index != item.length; index++) {
                 if (item[index] != null) {
-                    System.out.print("name: " + item[index].getName() + ", ");
-                    System.out.print(" description: " + item[index].getDescription() + ", ");
-                    System.out.println(" id: " + item[index].getId());
+                    System.out.println("name: " + item[index].getName() + ", ");
+                    System.out.println("description: " + item[index].getDescription() + ", ");
+                    System.out.println("id: " + item[index].getId());
                 } else {
                     count++;
                 }

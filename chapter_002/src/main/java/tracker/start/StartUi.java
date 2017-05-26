@@ -1,7 +1,7 @@
 package tracker.start;
 
 /**
- * Package for class StartUi.
+ * Class StartUi.
  *
  * @author Maxim Ignashov (mailto:ignashov.m@icloud.com)
  * @version 1.0
@@ -34,9 +34,9 @@ public class StartUi {
         int key;
         do {
             menu.show();
-            key = Integer.valueOf(input.ask("Select number: "));
+            key = input.ask("Select: ", menu.getRanges());
             menu.select(key);
-        } while (key != Integer.valueOf("7"));
+        } while (key != 7);
 
     }
     /**
@@ -44,7 +44,7 @@ public class StartUi {
      * @param args default param
      */
     public static void main(String[] args) {
-        StartUi start = new StartUi(new Tracker(), new ConsoleInput());
+        StartUi start = new StartUi(new Tracker(), new ValidateInput());
         start.init();
     }
 }

@@ -1,5 +1,5 @@
 /**
- * Package for class Tracker.
+ * Package for packages models, start.
  *
  * @author Maxim Ignashov (mailto:ignashov.m@icloud.com)
  * @version 1.0

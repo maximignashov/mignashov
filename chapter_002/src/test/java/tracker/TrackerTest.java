@@ -8,7 +8,7 @@ import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertThat;
 
 /**
- * Package for class .
+ * Class TrackerTest.
  *
  * @author Maxim Ignashov (mailto:ignashov.m@icloud.com)
  * @version 1.0

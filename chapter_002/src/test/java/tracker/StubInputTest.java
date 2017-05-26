@@ -1,18 +1,20 @@
 package tracker;
 
 import tracker.models.Item;
-import tracker.start.Input;
-import tracker.start.StubInput;
-import tracker.start.Tracker;
-import tracker.start.StartUi;
 
 import org.junit.Test;
+import tracker.start.Input;
+import tracker.start.StartUi;
+import tracker.start.StubInput;
+import tracker.start.Tracker;
+import tracker.start.MenuOutException;
+
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertThat;
 
 /**
- * Class StupInputTest.
+ * Class StubInputTest.
  *
  * @author Maxim Ignashov (mailto:ignashov.m@icloud.com)
  * @version 1.0
@@ -85,4 +87,25 @@ public class StubInputTest {
         start.init();
         assertThat(tracker.findAll()[0], nullValue());
     }
+    /**
+     * Test wrong range menu.
+     * @throws MenuOutException when out of menu range
+     */
+    @Test(expected = MenuOutException.class)
+    public void whenTypeWrongMenuNumberThenThrowException() throws MenuOutException {
+        Tracker tracker = new Tracker();
+        Input input = new StubInput(new String[]{"99"});
+        new StartUi(tracker, input).init();
+    }
+    /**
+     * Test string type.
+     * @throws NumberFormatException when type string at menu
+     */
+    @Test(expected = NumberFormatException.class)
+    public void whenTypeStringThenThrowException() throws NumberFormatException {
+        Tracker tracker = new Tracker();
+        Input input = new StubInput(new String[]{"qwerty"});
+        new StartUi(tracker, input).init();
+    }
+
 }

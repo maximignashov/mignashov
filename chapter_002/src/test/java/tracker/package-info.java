@@ -1,5 +1,5 @@
 /**
- * Package for class TrackerTest.
+ * Package for classes TrackerTest, StubInputTest.
  *
  * @author Maxim Ignashov (mailto:ignashov.m@icloud.com)
  * @version 1.0

@@ -1,7 +1,7 @@
 package tracker.start;
 
 /**
- * Interface MenuAction.
+ * Interface UserAction.
  *
  * @author Maxim Ignashov (mailto:ignashov.m@icloud.com)
  * @version 1.0

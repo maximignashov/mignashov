@@ -1,7 +1,7 @@
 package tracker.start;
 
 /**
- * Package for class .
+ * Class StubInput.
  *
  * @author Maxim Ignashov (mailto:ignashov.m@icloud.com)
  * @version 1.0
@@ -24,11 +24,37 @@ public class StubInput implements Input {
         this.answers = answers;
     }
     /**
+     * default Constructor.
+     */
+    public StubInput() {
+    }
+    /**
      * Initialisation auto ask method.
      * @param question question for ask
      * @return ask
      */
     public String ask(String question) {
         return answers[position++];
+    }
+    /**
+     * Initialisation number menu.
+     * @param question question for ask
+     * @param range array of menu numbers
+     * @return number
+     */
+    public int ask(String question, int[] range) {
+        int key = Integer.valueOf(this.ask(question));
+        boolean exist = false;
+        for (int value : range) {
+            if (value == key) {
+                exist = true;
+                break;
+            }
+        }
+        if (exist) {
+            return key;
+        } else {
+            throw new MenuOutException("Out of range");
+        }
     }
 }

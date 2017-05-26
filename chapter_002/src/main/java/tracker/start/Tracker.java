@@ -5,7 +5,7 @@ import tracker.models.Item;
 import java.util.Random;
 
 /**
- * Package for class .
+ * Class Tracker.
  *
  * @author Maxim Ignashov (mailto:ignashov.m@icloud.com)
  * @version 1.0
