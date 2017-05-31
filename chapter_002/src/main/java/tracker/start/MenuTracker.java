@@ -9,26 +9,28 @@ import tracker.models.Task;
  * @version 1.0
  * @since 15.05.17
  */
-class EditItem implements UserAction {
+class EditItem extends BaseAction {
     /**
-     * key for select.
-     * @return int number for edit item
+     * Constructor.
+     * @param name action menu name
      */
-    public int key() {
-        return 3;
+    EditItem(String name) {
+        super(name);
     }
     /**
-     * menu.
-     * @return String menu
+     * Menu number key.
+     * @return int number
      */
-    public String info() {
-        return String.format("%s. %s", this.key(), "Edit item");
+    @Override
+    public int key() {
+        return 3;
     }
     /**
      * execute action of menu.
      * @param input interface for ask
      * @param tracker object for action with
      */
+    @Override
     public void execute(Input input, Tracker tracker) {
         String id = input.ask("item id for edit: ");
         Item item = tracker.findById(id);
@@ -50,26 +52,28 @@ class EditItem implements UserAction {
  * @version 1.0
  * @since 15.05.17
  */
-class DeleteItem implements UserAction {
+class DeleteItem extends BaseAction {
     /**
-     * key for select.
-     * @return int number menu for delete item
+     * Constructor.
+     * @param name action menu name
      */
-    public int key() {
-        return 4;
+    DeleteItem(String name) {
+        super(name);
     }
     /**
-     * menu.
-     * @return String menu
+     * Menu number key.
+     * @return int number
      */
-    public String info() {
-        return String.format("%s. %s", this.key(), "Delete item");
+    @Override
+    public int key() {
+        return 4;
     }
     /**
      * execute action of menu.
      * @param input interface for ask
      * @param tracker object for action with
      */
+    @Override
     public void execute(Input input, Tracker tracker) {
         String id = input.ask("item id for delete: ");
         Item item = tracker.findById(id);
@@ -87,26 +91,28 @@ class DeleteItem implements UserAction {
  * @version 1.0
  * @since 15.05.17
  */
-class ExitTracker implements UserAction {
+class ExitTracker extends BaseAction {
     /**
-     * key for select.
-     * @return int number to exit programm
+     * Constructor.
+     * @param name action menu name
      */
-    public int key() {
-        return 7;
+    ExitTracker(String name) {
+        super(name);
     }
     /**
-     * menu.
-     * @return String menu
+     * Menu number key.
+     * @return int number
      */
-    public String info() {
-        return String.format("%s. %s", this.key(), "Exit programm");
+    @Override
+    public int key() {
+        return 7;
     }
     /**
      * execute action of menu.
      * @param input interface for ask
      * @param tracker object for action with
      */
+    @Override
     public void execute(Input input, Tracker tracker) {
         System.out.println("Exiting...");
     }
@@ -135,6 +141,10 @@ public class MenuTracker {
      */
     private int[] ranges = new int[7];
     /**
+     * position menu number.
+     */
+    private int position = 1;
+    /**
      * Constructor.
      * @param tracker initialisation
      * @param input initialisation
@@ -147,13 +157,13 @@ public class MenuTracker {
      * Fill menu and determine action.
      */
     public void fillActions() {
-        this.actions[1] = this.new AddItem();
-        this.actions[2] = new MenuTracker.ShowAllItems();
-        this.actions[3] = new EditItem();
-        this.actions[4] = new DeleteItem();
-        this.actions[5] = new MenuTracker.FindItemById();
-        this.actions[6] = this.new FindItemByName();
-        this.actions[7] = new ExitTracker();
+        this.actions[position++] = this.new AddItem("Add new item");
+        this.actions[position++] = new MenuTracker.ShowAllItems("Show all items");
+        this.actions[position++] = new EditItem("Edit item");
+        this.actions[position++] = new DeleteItem("Delete item");
+        this.actions[position++] = new MenuTracker.FindItemById("Find item by id");
+        this.actions[position++] = this.new FindItemByName("Find items by name");
+        this.actions[position++] = new ExitTracker("Exit programm");
     }
     /**
      * Fill values range.
@@ -194,26 +204,28 @@ public class MenuTracker {
      * @version 1.0
      * @since 15.05.17
      */
-    private class AddItem implements UserAction {
+    private class AddItem extends BaseAction {
         /**
-         * key for select.
-         * @return int number to add item
+         * Constructor.
+         * @param name action menu name
          */
-        public int key() {
-            return 1;
+        AddItem(String name) {
+            super(name);
         }
         /**
-         * menu.
-         * @return String menu
+         * Menu number key.
+         * @return int number
          */
-        public String info() {
-            return String.format("%s. %s", this.key(), "Add new item");
+        @Override
+        public int key() {
+            return 1;
         }
         /**
          * execute action of menu.
          * @param input interface for ask
          * @param tracker object for action with
          */
+        @Override
         public void execute(Input input, Tracker tracker) {
             String name = input.ask("item user name: ");
             String description = input.ask("item description: ");
@@ -226,26 +238,28 @@ public class MenuTracker {
      * @version 1.0
      * @since 15.05.17
      */
-    private static class ShowAllItems implements UserAction {
+    private static class ShowAllItems extends BaseAction {
         /**
-         * key for select.
-         * @return int number to show all items
+         * Constructor.
+         * @param name action menu name
          */
-        public int key() {
-            return 2;
+        ShowAllItems(String name) {
+            super(name);
         }
         /**
-         * menu.
-         * @return String menu
+         * Menu number key.
+         * @return int number
          */
-        public String info() {
-            return String.format("%s. %s", this.key(), "Show all items");
+        @Override
+        public int key() {
+            return 2;
         }
         /**
          * execute action of menu.
          * @param input interface for ask
          * @param tracker object for action with
          */
+        @Override
         public void execute(Input input, Tracker tracker) {
             for (Item items : tracker.findAll()) {
                 if (items != null) {
@@ -262,26 +276,28 @@ public class MenuTracker {
      * @version 1.0
      * @since 15.05.17
      */
-    private static class FindItemById implements UserAction {
+    private static class FindItemById extends BaseAction {
         /**
-         * key for select.
-         * @return int number to find item by id
+         * Constructor.
+         * @param name action menu name
          */
-        public int key() {
-            return 5;
+        FindItemById(String name) {
+            super(name);
         }
         /**
-         * menu.
-         * @return String menu
+         * Menu number key.
+         * @return int number
          */
-        public String info() {
-            return String.format("%s. %s", this.key(), "Find item by id");
+        @Override
+        public int key() {
+            return 5;
         }
         /**
          * execute action of menu.
          * @param input interface for ask
          * @param tracker object for action with
          */
+        @Override
         public void execute(Input input, Tracker tracker) {
             String id = input.ask("item id: ");
             Item item = tracker.findById(id);
@@ -300,26 +316,28 @@ public class MenuTracker {
      * @version 1.0
      * @since 15.05.17
      */
-    private class FindItemByName implements UserAction {
+    private class FindItemByName extends BaseAction {
         /**
-         * key for select.
-         * @return int number to find item by name
+         * Constructor.
+         * @param name action menu name
          */
-        public int key() {
-            return 6;
+        FindItemByName(String name) {
+            super(name);
         }
         /**
-         * menu.
-         * @return String menu
+         * Menu number key.
+         * @return int number
          */
-        public String info() {
-            return String.format("%s. %s", this.key(), "Find items by name");
+        @Override
+        public int key() {
+            return 6;
         }
         /**
          * execute action of menu.
          * @param input interface for ask
          * @param tracker object for action with
          */
+        @Override
         public void execute(Input input, Tracker tracker) {
             String name = input.ask("item name: ");
             Item[] item = tracker.findByName(name);
