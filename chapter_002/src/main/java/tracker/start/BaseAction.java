@@ -13,17 +13,18 @@ public abstract class BaseAction implements UserAction {
      */
     private String name;
     /**
+     * key menu action.
+     */
+    private int key;
+    /**
      * Constructor BaseAction.
      * @param name menu action
+     * @param key key menu action
      */
-    public BaseAction(String name) {
+    public BaseAction(String name, int key) {
         this.name = name;
+        this.key = key;
     }
-    /**
-     * key for select.
-     * @return int number of menu
-     */
-    public abstract int key();
     /**
      * execute action of menu.
      * @param input interface for ask
@@ -35,6 +36,6 @@ public abstract class BaseAction implements UserAction {
      * @return String menu action
      */
     public String info() {
-        return String.format("%s. %s", key(), this.name);
+        return String.format("%s. %s", this.key, this.name);
     }
 }

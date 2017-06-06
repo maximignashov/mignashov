@@ -9,11 +9,6 @@ package tracker.start;
  */
 public interface UserAction {
     /**
-     * key for select.
-     * @return int number of menu
-     */
-    int key();
-    /**
      * execute action of menu.
      * @param input interface for ask
      * @param tracker object for action with
