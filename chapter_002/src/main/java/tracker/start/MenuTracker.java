@@ -13,6 +13,7 @@ class EditItem extends BaseAction {
     /**
      * Constructor.
      * @param name action menu name
+     * @param key key menu action
      */
     EditItem(String name, int key) {
         super(name, key);
@@ -48,6 +49,7 @@ class DeleteItem extends BaseAction {
     /**
      * Constructor.
      * @param name action menu name
+     * @param key key menu action
      */
     DeleteItem(String name, int key) {
         super(name, key);
@@ -79,6 +81,7 @@ class ExitTracker extends BaseAction {
     /**
      * Constructor.
      * @param name action menu name
+     * @param key key menu action
      */
     ExitTracker(String name, int key) {
         super(name, key);
@@ -133,13 +136,13 @@ public class MenuTracker {
      * Fill menu and determine action.
      */
     public void fillActions() {
-        this.actions[position++] = this.new AddItem("Add new item", position-1);
-        this.actions[position++] = new MenuTracker.ShowAllItems("Show all items", position-1);
-        this.actions[position++] = new EditItem("Edit item", position-1);
-        this.actions[position++] = new DeleteItem("Delete item", position-1);
-        this.actions[position++] = new MenuTracker.FindItemById("Find item by id", position-1);
-        this.actions[position++] = this.new FindItemByName("Find items by name", position-1);
-        this.actions[position++] = new ExitTracker("Exit programm", position-1);
+        this.actions[position++] = this.new AddItem("Add new item", position - 1);
+        this.actions[position++] = new MenuTracker.ShowAllItems("Show all items", position - 1);
+        this.actions[position++] = new EditItem("Edit item", position - 1);
+        this.actions[position++] = new DeleteItem("Delete item", position - 1);
+        this.actions[position++] = new MenuTracker.FindItemById("Find item by id", position - 1);
+        this.actions[position++] = this.new FindItemByName("Find items by name", position - 1);
+        this.actions[position++] = new ExitTracker("Exit programm", position - 1);
     }
     /**
      * Fill values range.
@@ -184,6 +187,7 @@ public class MenuTracker {
         /**
          * Constructor.
          * @param name action menu name
+         * @param key key menu action
          */
         AddItem(String name, int key) {
             super(name, key);
@@ -210,6 +214,7 @@ public class MenuTracker {
         /**
          * Constructor.
          * @param name action menu name
+         * @param key key menu action
          */
         ShowAllItems(String name, int key) {
             super(name, key);
@@ -240,6 +245,7 @@ public class MenuTracker {
         /**
          * Constructor.
          * @param name action menu name
+         * @param key key menu action
          */
         FindItemById(String name, int key) {
             super(name, key);
@@ -272,6 +278,7 @@ public class MenuTracker {
         /**
          * Constructor.
          * @param name action menu name
+         * @param key key menu action
          */
         FindItemByName(String name, int key) {
             super(name, key);
