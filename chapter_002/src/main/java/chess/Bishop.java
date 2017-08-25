@@ -32,12 +32,16 @@ public class Bishop extends Figure {
         int curVertical = (int) curVerticalChar - 96;
         int vert = (int) vertChar - 96;
 
-        Cell[] bishopWay = new Cell[horis];
+        int wayLength = horis + curHoris;
+
+        Cell[] bishopWay = new Cell[wayLength];
 
         if (((horis + vert) == (curHoris + curVertical))
                 || (Math.abs(horis - vert) == Math.abs(curHoris - curVertical))) {
-            for (int i = 0; i < horis - 1; i++) {
-                bishopWay[i] = new Cell(horis - i, (char) (vertChar - i));
+            for (int i = 0; i < wayLength; i++) {
+                if (horis - i != curHoris || vertChar - i != curVerticalChar) {
+                    bishopWay[i] = new Cell(horis - i, (char) (vertChar - i));
+                }
             }
         } else {
             throw new ImpossiblleMoveException("Can't move bishop this way");

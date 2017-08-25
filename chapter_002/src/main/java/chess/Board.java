@@ -17,6 +17,10 @@ public class Board {
      */
     private Figure[] figures = new Figure[32];
     /**
+     * Counter for place figures.
+     */
+    private int counter = 0;
+    /**
      * Constructor default.
      */
     public Board() {
@@ -44,10 +48,13 @@ public class Board {
             throw new FigureNotFoundException("No figure in cell");
         }
         Cell[] way = figures[currentFigure].way(dist);
-        for (int i = way.length - 2; i >= 0; i--) {
-            int haveFigure = isFigureInCell(way[i]);
-            if (haveFigure != -1) {
-                throw new OccupiedMoveException("Have a figure on a way");
+        int haveFigure;
+        for (int i = way.length - 1; i >= 0; i--) {
+            if (way[i] != null) {
+                haveFigure = isFigureInCell(way[i]);
+                if (haveFigure != -1) {
+                    throw new OccupiedMoveException("Have a figure on a way");
+                }
             }
         }
         figures[currentFigure] = figures[currentFigure].clone(dist);
@@ -85,12 +92,8 @@ public class Board {
     /**
      * Place figure in cell.
      * @param figure current figure
-     * @return figure
      */
-    public Figure placeFigureInCell(Figure figure) {
-        int counter = 0;
-        this.figures[counter++] = figure;
-
-        return this.figures[counter];
+    public void placeFigureInCell(Figure figure) {
+        this.figures[this.counter++] = figure;
     }
 }
