@@ -1,22 +1,22 @@
 package chess;
 
 /**
- * Class Bishop.
+ * Class Castle (Ладья).
  *
  * @author Maxim Ignashov (mailto:ignashov.m@icloud.com)
  * @version 1.0
- * @since 12.08.17
+ * @since 25.08.17
  */
-public class Bishop extends Figure {
+public class Castle extends Figure {
     /**
      * Constructor.
      * @param position Cell type
      */
-    public Bishop(Cell position) {
+    public Castle(Cell position) {
         super(position);
     }
     /**
-     * Way passes Bishop.
+     * Way passes Castle.
      * @param dist distination of Cell
      * @return Cell[] array.
      * @throws ImpossiblleMoveException when try turn wrong way
@@ -29,24 +29,18 @@ public class Bishop extends Figure {
         int horis = dist.getHorizontal();
         char vertChar = dist.getVertical();
 
-        int curVertical = (int) curVerticalChar - 96;
-        int vert = (int) vertChar - 96;
-
         int wayLength = horis + curHoris;
 
-        Cell[] bishopWay = new Cell[wayLength];
+        Cell[] castleWay = new Cell[wayLength];
 
-        if (((horis + vert) == (curHoris + curVertical))
-                || (Math.abs(horis - vert) == Math.abs(curHoris - curVertical))) {
-            for (int i = 0; i < wayLength - 1; i++) {
-                if (horis - i != curHoris || vertChar - i != curVerticalChar) {
-                    bishopWay[i] = new Cell(horis - i, (char) (vertChar - i));
-                }
+        if (curHoris == horis || curVerticalChar == vertChar) {
+            for (int i = 0; i < wayLength; i++) {
+                castleWay[i] = new Cell(horis, (char) (vertChar - i));
             }
         } else {
-            throw new ImpossiblleMoveException("Can't move bishop this way");
-        }
-        return bishopWay;
+        throw new ImpossiblleMoveException("Can't move Castle this way");
+    }
+        return castleWay;
     }
     /**
      * Clone figure to new distination.
@@ -55,6 +49,7 @@ public class Bishop extends Figure {
      */
     @Override
     public Figure clone(Cell dist) {
-        return new Bishop(dist);
+        return new Castle(dist);
     }
+
 }
