@@ -45,9 +45,10 @@ public class CastleTest {
     }
     /**
      * Test Castle move to wrong cell.
+     * @throws ImpossiblleMoveException when impossible move figure
      */
     @Test(expected = ImpossiblleMoveException.class)
-    public void whenMoveToWrongCell() throws ImpossiblleMoveException{
+    public void whenMoveToWrongCell() throws ImpossiblleMoveException {
         Board board = new Board();
 
         Cell a1 = new Cell(1, 'a');
@@ -60,6 +61,7 @@ public class CastleTest {
     }
     /**
      * Test Castle move to occupaid cell.
+     * @throws OccupiedMoveException when figure occupied
      */
     @Test(expected = OccupiedMoveException.class)
     public void whenMoveToOccupaidCell() throws OccupiedMoveException {
