@@ -39,17 +39,19 @@ public class ConvertList {
         int i = 0;
         int j = 0;
         for (Integer arrList: list) {
-            for (; i < array.length;) {
-                for (; j < array.length;) {
-                    array[i][j] = arrList;
+            if (list.get(arrList - 1) != null) {
+                for (; i < array.length;) {
+                    for (; j < array.length;) {
+                        array[i][j] = arrList;
+                        break;
+                    }
+                    j++;
                     break;
                 }
-                j++;
-                break;
-            }
-            if (j % rows == 0) {
-                i++;
-                j = 0;
+                if (j % rows == 0) {
+                    i++;
+                    j = 0;
+                }
             }
         }
         return array;

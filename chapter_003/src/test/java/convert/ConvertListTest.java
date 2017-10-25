@@ -20,7 +20,7 @@ public class ConvertListTest {
      * Test convert List to Array.
      */
     @Test
-    public void whenConvertListToArray() {
+    public void whenConvertArrayToList() {
         ConvertList conv = new ConvertList();
         List<Integer> arrayTolist;
 
@@ -42,7 +42,7 @@ public class ConvertListTest {
      * Test convert Array to List.
      */
     @Test
-    public void whenConvertArrayToList() {
+    public void whenConvertListToArray() {
         ConvertList conv = new ConvertList();
 
         ArrayList<Integer> listOfInteger = new ArrayList<>();
@@ -54,11 +54,11 @@ public class ConvertListTest {
         listOfInteger.add(6);
         listOfInteger.add(7);
 
-        int[][] listToarray;
-        listToarray = conv.toArray(listOfInteger, 3);
+        int[][] listToArray;
+        listToArray = conv.toArray(listOfInteger, 3);
 
         int[][] endArray = {{1, 2, 3}, {4, 5, 6}, {7, 0, 0}};
 
-        assertThat(listToarray, is(endArray));
+        assertThat(listToArray, is(endArray));
     }
 }
