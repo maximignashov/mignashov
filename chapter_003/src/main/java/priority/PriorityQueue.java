@@ -16,18 +16,21 @@ public class PriorityQueue {
      * @param task задача
      */
     public void put(Task task) {
-        int priority = task.getPriority();
-        for (int i = 0; i < priority; i++) {
-            if (priority == i + 1) {
-               this.tasks.add(i, task);
-            } else {
-                this.tasks.add(task);
-                priority = 0;
+        int size = this.tasks.size();
+        if (size == 0) {
+            this.tasks.add(task);
+        } else {
+            int priorityParam = task.getPriority();
+            for (int i = 0; i < size; i++) {
+                if (priorityParam < this.tasks.get(i).getPriority() && !this.tasks.contains(task)) {
+                    this.tasks.add(i, task);
+                }
+
             }
         }
     }
     /**
-     * Метод удаляет первый элемент из списка.
+     * Метод удаляет и выводит первый элемент из списка.
      * @return значение
      */
     public Task take() {
