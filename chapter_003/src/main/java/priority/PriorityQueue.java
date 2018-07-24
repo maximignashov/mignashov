@@ -27,6 +27,9 @@ public class PriorityQueue {
                 }
 
             }
+            if (!this.tasks.contains(task)) {
+                this.tasks.add(task);
+            }
         }
     }
     /**
