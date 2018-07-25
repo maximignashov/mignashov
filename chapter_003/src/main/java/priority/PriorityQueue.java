@@ -22,13 +22,10 @@ public class PriorityQueue {
         } else {
             int priorityParam = task.getPriority();
             for (int i = 0; i < size; i++) {
-                if (priorityParam < this.tasks.get(i).getPriority() && !this.tasks.contains(task)) {
+                if (priorityParam < this.tasks.get(i).getPriority()) {
+                    size = i;
                     this.tasks.add(i, task);
                 }
-
-            }
-            if (!this.tasks.contains(task)) {
-                this.tasks.add(task);
             }
         }
     }
