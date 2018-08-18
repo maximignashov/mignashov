@@ -61,4 +61,25 @@ public class ConvertListTest {
 
         assertThat(listToArray, is(endArray));
     }
+    /**
+     * Test convert two List<int[]> to one List<Integer>.
+     */
+    @Test
+    public void whenTwoListToOneList() {
+        ConvertList conv = new ConvertList();
+        List<int[]> list = new ArrayList<>();
+        list.add(new int[]{1, 2});
+        list.add(new int[]{3, 4, 5, 6});
+        List<Integer> result = conv.convert(list);
+
+        List<Integer> endList = new ArrayList<>();
+        endList.add(1);
+        endList.add(2);
+        endList.add(3);
+        endList.add(4);
+        endList.add(5);
+        endList.add(6);
+
+        assertThat(result, is(endList));
+    }
 }
