@@ -63,13 +63,9 @@ public class ConvertList {
      */
     public List<Integer> convert(List<int[]> list) {
         List<Integer> result = new ArrayList<>();
-        for (int i = 0; i < list.size() - 1; i++) {
-            for (int j = 0; j < list.get(i).length - 1; j++) {
-                for (int[] arr : list) {
-                    for (int k = 0; k < arr.length; k++) {
-                        result.add(arr[k]);
-                    }
-                }
+        for (int[] arr : list) {
+            for (int elem : arr) {
+                result.add(elem);
             }
         }
         return result;
