@@ -17,28 +17,15 @@ public class PriorityQueue {
      */
     public void put(Task task) {
         int size = this.tasks.size();
-        if (size == 0) {
-            this.tasks.add(task);
-        }
+        int index = size;
+        int currentPriority = task.getPriority();
         for (int i = 0; i < size; i++) {
-            int min = task.getPriority();
-            if (min < this.tasks.get(i).getPriority()) {
-                this.tasks.add(i, task);
+            if (currentPriority < this.tasks.get(i).getPriority()) {
+                index = i;
                 size = 0;
-            } else {
-                for (int j = 0; j < size; j++) {
-                    int max = task.getPriority();
-                    if (this.tasks.get(j).getPriority() > max) {
-                        this.tasks.add(j, task);
-                        size = 0;
-                    }
-                }
-            }
-            if (size != 0) {
-                size = 0;
-                this.tasks.add(task);
             }
         }
+        tasks.add(index, task);
     }
     /**
      * Метод выводит первый элемент из списка.
