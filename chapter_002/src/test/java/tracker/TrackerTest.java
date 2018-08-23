@@ -4,7 +4,6 @@ import tracker.models.Item;
 import tracker.start.Tracker;
 import org.junit.Test;
 import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -23,7 +22,7 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item item = new Item("test1", "testDescription", 123L);
         tracker.add(item);
-        assertThat(tracker.findAll()[0], is(item));
+        assertThat(tracker.findAll().get(0), is(item));
     }
     /**
      * Test findByName.
@@ -33,7 +32,7 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item item = new Item("test1", "testDescription", 123L);
         tracker.add(item);
-        assertThat(tracker.findByName("test1")[0], is(item));
+        assertThat(tracker.findByName("test1").get(0), is(item));
     }
     /**
      * Test update.
@@ -45,7 +44,7 @@ public class TrackerTest {
         tracker.add(item);
         item.setDescription("newDescription");
         tracker.update(item);
-        assertThat(tracker.findByName("test1")[0], is(item));
+        assertThat(tracker.findByName("test1").get(0), is(item));
     }
     /**
      * Test delete.
@@ -56,6 +55,6 @@ public class TrackerTest {
         Item item = new Item("test1", "testDescription", 123L);
         tracker.add(item);
         tracker.delete(item);
-        assertThat(tracker.findAll()[0], nullValue());
+        assertThat(tracker.findAll().size(), is(0));
     }
 }

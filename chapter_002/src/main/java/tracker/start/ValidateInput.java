@@ -1,5 +1,7 @@
 package tracker.start;
 
+import java.util.ArrayList;
+
 /**
  * Class ValidateInput.
  *
@@ -14,7 +16,7 @@ public class ValidateInput extends ConsoleInput {
      * @param range array menu numbers
      * @return int number
      */
-    public int ask(String question, int[] range) {
+    public int ask(String question, ArrayList<Integer> range) {
         boolean invalid = true;
         int value = 0;
         do {

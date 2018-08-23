@@ -1,5 +1,7 @@
 package tracker.start;
 
+import java.util.ArrayList;
+
 /**
  * Interface Input.
  *
@@ -17,8 +19,8 @@ public interface Input {
     /**
      * ask int initialisation.
      * @param question question for ask
-     * @param range array int[]
+     * @param range ArrayList
      * @return String answer the question
      */
-    int ask(String question, int[] range);
+    int ask(String question, ArrayList<Integer> range);
 }

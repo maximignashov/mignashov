@@ -9,8 +9,9 @@ import tracker.start.StubInput;
 import tracker.start.Tracker;
 import tracker.start.MenuOutException;
 
+import java.util.ArrayList;
+
 import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -27,9 +28,15 @@ public class StubInputTest {
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
         Tracker tracker = new Tracker();
-        Input input = new StubInput(new String[]{"1", "test name", "desc", "7"});
-        new StartUi(tracker, input).init();
-        assertThat(tracker.findAll()[0].getName(), is("test name"));
+        Input input = new StubInput(new ArrayList<String>() {{
+            add("1");
+            add("test name");
+            add("desc");
+            add("7");
+        }});
+
+            new StartUi(tracker, input).init();
+        assertThat(tracker.findAll().get(0).getName(), is("test name"));
     }
     /**
      * Test find by name.
@@ -37,11 +44,16 @@ public class StubInputTest {
     @Test
     public void whenUserAddNewItemAndUserFindItemByNameThenTrackerHasFindItem() {
         Tracker tracker = new Tracker();
-        Input input = new StubInput(new String[]{
-                "1", "test name", "desc",
-                "6", "test name", "7"});
+        Input input = new StubInput(new ArrayList<String>() {{
+            add("1");
+            add("test name");
+            add("desc");
+            add("6");
+            add("test name");
+            add("7");
+        }});
         new StartUi(tracker, input).init();
-        assertThat(tracker.findAll()[0].getName(), is("test name"));
+        assertThat(tracker.findAll().get(0).getName(), is("test name"));
     }
     /**
      * Test find by id.
@@ -51,11 +63,14 @@ public class StubInputTest {
         Tracker tracker = new Tracker();
         Item item = new Item("test1", "testDescription", 123L);
         tracker.add(item);
-        String id = tracker.findByName("test1")[0].getId();
-        Input input = new StubInput(new String[]{
-                "5", id, "7"});
+        String id = tracker.findByName("test1").get(0).getId();
+        Input input = new StubInput(new ArrayList<String>() {{
+            add("5");
+            add(id);
+            add("7");
+        }});
         new StartUi(tracker, input).init();
-        assertThat(tracker.findAll()[0].getName(), is("test1"));
+        assertThat(tracker.findAll().get(0).getName(), is("test1"));
     }
     /**
      * Test update item.
@@ -65,12 +80,17 @@ public class StubInputTest {
         Tracker tracker = new Tracker();
         Item item = new Item("test1", "testDescription", 123L);
         tracker.add(item);
-        String id = tracker.findByName("test1")[0].getId();
-        Input input = new StubInput(new String[]{
-                "3", id, "new test", "new desc", "7"});
+        String id = tracker.findByName("test1").get(0).getId();
+        Input input = new StubInput(new ArrayList<String>() {{
+            add("3");
+            add(id);
+            add("new test");
+            add("new desc");
+            add("7");
+        }});
         StartUi start = new StartUi(tracker, input);
         start.init();
-        assertThat(tracker.findAll()[0].getName(), is("new test"));
+        assertThat(tracker.findAll().get(0).getName(), is("new test"));
     }
     /**
      * Test delete item.
@@ -80,12 +100,15 @@ public class StubInputTest {
         Tracker tracker = new Tracker();
         Item item = new Item("test1", "testDescription", 123L);
         tracker.add(item);
-        String id = tracker.findByName("test1")[0].getId();
-        Input input = new StubInput(new String[]{
-                "4", id, "7"});
+        String id = tracker.findByName("test1").get(0).getId();
+        Input input = new StubInput(new ArrayList<String>() {{
+            add("4");
+            add(id);
+            add("7");
+        }});
         StartUi start = new StartUi(tracker, input);
         start.init();
-        assertThat(tracker.findAll()[0], nullValue());
+        assertThat(tracker.findAll().size(), is(0));
     }
     /**
      * Test wrong range menu.
@@ -94,7 +117,9 @@ public class StubInputTest {
     @Test(expected = MenuOutException.class)
     public void whenTypeWrongMenuNumberThenThrowException() throws MenuOutException {
         Tracker tracker = new Tracker();
-        Input input = new StubInput(new String[]{"99"});
+        Input input = new StubInput(new ArrayList<String>() {{
+            add("99");
+        }});
         new StartUi(tracker, input).init();
     }
     /**
@@ -104,8 +129,9 @@ public class StubInputTest {
     @Test(expected = NumberFormatException.class)
     public void whenTypeStringThenThrowException() throws NumberFormatException {
         Tracker tracker = new Tracker();
-        Input input = new StubInput(new String[]{"qwerty"});
+        Input input = new StubInput(new ArrayList<String>() {{
+            add("qwerty");
+        }});
         new StartUi(tracker, input).init();
     }
-
 }

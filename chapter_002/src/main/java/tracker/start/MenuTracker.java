@@ -3,6 +3,8 @@ package tracker.start;
 import tracker.models.Item;
 import tracker.models.Task;
 
+import java.util.ArrayList;
+
 /**
  * External class EditItem.
  * @author Maxim Ignashov (mailto:ignashov.m@icloud.com)
@@ -114,11 +116,11 @@ public class MenuTracker {
     /**
      * array with actions.
      */
-    private UserAction[] actions = new UserAction[8];
+    private ArrayList<UserAction> actions = new ArrayList<>();
     /**
      * array range.
      */
-    private int[] ranges = new int[7];
+    private ArrayList<Integer> ranges = new ArrayList<>();
     /**
      * position menu number.
      */
@@ -136,27 +138,29 @@ public class MenuTracker {
      * Fill menu and determine action.
      */
     public void fillActions() {
-        this.actions[position++] = this.new AddItem("Add new item", position - 1);
-        this.actions[position++] = new MenuTracker.ShowAllItems("Show all items", position - 1);
-        this.actions[position++] = new EditItem("Edit item", position - 1);
-        this.actions[position++] = new DeleteItem("Delete item", position - 1);
-        this.actions[position++] = new MenuTracker.FindItemById("Find item by id", position - 1);
-        this.actions[position++] = this.new FindItemByName("Find items by name", position - 1);
-        this.actions[position++] = new ExitTracker("Exit programm", position - 1);
+        this.actions.add(this.new AddItem("Add new item", position++));
+        this.actions.add(new MenuTracker.ShowAllItems("Show all items", position++));
+        this.actions.add(new EditItem("Edit item", position++));
+        this.actions.add(new DeleteItem("Delete item", position++));
+        this.actions.add(new MenuTracker.FindItemById("Find item by id", position++));
+        this.actions.add(this.new FindItemByName("Find items by name", position++));
+        this.actions.add(new ExitTracker("Exit programm", position++));
     }
     /**
      * Fill values range.
      */
     public void fillRange() {
-        for (int index = 0; index != this.actions.length - 1; index++) {
-            this.ranges[index] = index + 1;
+        if (this.ranges.size() == 0) {
+            for (int index = 0; index != this.actions.size(); index++) {
+                this.ranges.add(index, index + 1);
+            }
         }
     }
     /**
      * Get values range.
      * @return int array
      */
-    public int[] getRanges() {
+    public ArrayList<Integer> getRanges() {
         return this.ranges;
     }
     /**
@@ -164,7 +168,7 @@ public class MenuTracker {
      * @param key int number of menu
      */
     public void select(int key) {
-        this.actions[key].execute(this.input, this.tracker);
+        this.actions.get(key-1).execute(this.input, this.tracker);
     }
     /**
      * Show all actions menu.
@@ -291,17 +295,17 @@ public class MenuTracker {
         @Override
         public void execute(Input input, Tracker tracker) {
             String name = input.ask("item name: ");
-            Item[] item = tracker.findByName(name);
+            ArrayList<Item> item = tracker.findByName(name);
             int count = 0;
-            for (int index = 0; index != item.length; index++) {
-                if (item[index] != null) {
-                    System.out.println("name: " + item[index].getName() + ", ");
-                    System.out.println("description: " + item[index].getDescription() + ", ");
-                    System.out.println("id: " + item[index].getId());
+            for (int index = 0; index != item.size(); index++) {
+                if (item.get(index) != null) {
+                    System.out.println("name: " + item.get(index).getName() + ", ");
+                    System.out.println("description: " + item.get(index).getDescription() + ", ");
+                    System.out.println("id: " + item.get(index).getId());
                 } else {
                     count++;
                 }
-                if (count == item.length) {
+                if (count == item.size()) {
                     System.out.println("can't find any items with name: " + name + ", please try again.");
                 }
             }

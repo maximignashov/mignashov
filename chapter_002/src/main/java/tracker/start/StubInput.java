@@ -1,5 +1,7 @@
 package tracker.start;
 
+import java.util.ArrayList;
+
 /**
  * Class StubInput.
  *
@@ -9,9 +11,9 @@ package tracker.start;
  */
 public class StubInput implements Input {
     /**
-     * array String[].
+     * ArrayList.
      */
-    private String[] answers;
+    private ArrayList<String> answers = new ArrayList<>();
     /**
      * position of array.
      */
@@ -20,8 +22,8 @@ public class StubInput implements Input {
      * Constructor.
      * @param answers array of answers
      */
-    public StubInput(String[] answers) {
-        this.answers = answers;
+    public StubInput(ArrayList<String> answers) {
+            this.answers.addAll(answers);
     }
     /**
      * default Constructor.
@@ -34,7 +36,7 @@ public class StubInput implements Input {
      * @return ask
      */
     public String ask(String question) {
-        return answers[position++];
+        return this.answers.get(position++);
     }
     /**
      * Initialisation number menu.
@@ -42,7 +44,7 @@ public class StubInput implements Input {
      * @param range array of menu numbers
      * @return number
      */
-    public int ask(String question, int[] range) {
+    public int ask(String question, ArrayList<Integer> range) {
         int key = Integer.valueOf(this.ask(question));
         boolean exist = false;
         for (int value : range) {

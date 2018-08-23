@@ -2,6 +2,7 @@ package tracker.start;
 
 import tracker.models.Item;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -13,9 +14,10 @@ import java.util.Random;
  */
 public class Tracker {
     /**
-     * Item[] array.
+     * ArrayList.
      */
-    private Item[] items = new Item[100];
+    private ArrayList<Item> items = new ArrayList<>();
+//    private Item[] items = new Item[100];
     /**
      * position.
      */
@@ -31,7 +33,7 @@ public class Tracker {
      */
     public Item add(Item item) {
         item.setId(this.generateId());
-        this.items[position++] = item;
+        this.items.add(position++, item);
         return item;
     }
     /**
@@ -39,11 +41,11 @@ public class Tracker {
      * @param item item for update
      */
     public void update(Item item) {
-        for (int index = 0; index != this.items.length; index++) {
-            String id = this.items[index].getId();
+        for (int index = 0; index != this.items.size(); index++) {
+            String id = this.items.get(index).getId();
             Item fItem = findById(id);
             if (fItem != null && item.getId().equals(id)) {
-                this.items[index] = item;
+                this.items.add(index, item);
                 break;
             }
         }
@@ -53,11 +55,11 @@ public class Tracker {
      * @param item item for delete
      */
     public void delete(Item item) {
-        for (int index = 0; index != this.items.length; index++) {
-            String id = this.items[index].getId();
+        for (int index = 0; index != this.items.size(); index++) {
+            String id = this.items.get(index).getId();
             Item fItem = findById(id);
             if (fItem != null && item.getId().equals(id)) {
-                this.items[index] = null;
+                this.items.clear();
                 break;
             }
         }
@@ -66,11 +68,11 @@ public class Tracker {
      * find all items.
      * @return find items
      */
-    public Item[] findAll() {
-        Item[] result  = new Item[items.length];
-        for (int index = 0; index != this.items.length; index++) {
-            if (items[index] != null) {
-                result[index] = items[index];
+    public ArrayList<Item> findAll() {
+        ArrayList<Item> result  = new ArrayList<>();
+        for (int index = 0; index != this.items.size(); index++) {
+            if (items.get(index) != null) {
+                result.add(index, items.get(index));
             }
         }
         return result;
@@ -80,11 +82,11 @@ public class Tracker {
      * @param key item name
      * @return find one item
      */
-    public Item[] findByName(String key) {
-        Item[] result  = new Item[items.length];
-        for (int index = 0; index != this.items.length; index++) {
-            if (items[index] != null && items[index].getName().equals(key)) {
-                result[index] = items[index];
+    public ArrayList<Item> findByName(String key) {
+        ArrayList<Item> result  = new ArrayList<>();
+        for (int index = 0; index != this.items.size(); index++) {
+            if (items.get(index) != null && items.get(index).getName().equals(key)) {
+                result.add(index, items.get(index));
             }
         }
         return result;
