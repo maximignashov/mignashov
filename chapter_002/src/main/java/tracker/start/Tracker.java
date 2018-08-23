@@ -2,6 +2,7 @@ package tracker.start;
 
 import tracker.models.Item;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -16,7 +17,7 @@ public class Tracker {
     /**
      * ArrayList.
      */
-    private ArrayList<Item> items = new ArrayList<>();
+    private List<Item> items = new ArrayList<>();
 //    private Item[] items = new Item[100];
     /**
      * position.
@@ -57,9 +58,9 @@ public class Tracker {
     public void delete(Item item) {
         for (int index = 0; index != this.items.size(); index++) {
             String id = this.items.get(index).getId();
-            Item fItem = findById(id);
-            if (fItem != null && item.getId().equals(id)) {
-                this.items.clear();
+            //Item fItem = findById(id);
+            if (item.getId() != null && item.getId().equals(id)) {
+                this.items.remove(item);
                 break;
             }
         }
@@ -68,7 +69,7 @@ public class Tracker {
      * find all items.
      * @return find items
      */
-    public ArrayList<Item> findAll() {
+    public List<Item> findAll() {
         ArrayList<Item> result  = new ArrayList<>();
         for (int index = 0; index != this.items.size(); index++) {
             if (items.get(index) != null) {

@@ -53,8 +53,10 @@ public class TrackerTest {
     public void whenAddNewItemThenDeleteItem() {
         Tracker tracker = new Tracker();
         Item item = new Item("test1", "testDescription", 123L);
+        Item item2 = new Item("test1", "testDescription", 123L);
         tracker.add(item);
+        tracker.add(item2);
         tracker.delete(item);
-        assertThat(tracker.findAll().size(), is(0));
+        assertThat(tracker.findAll().size(), is(1));
     }
 }
