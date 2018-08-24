@@ -44,8 +44,7 @@ public class Tracker {
     public void update(Item item) {
         for (int index = 0; index != this.items.size(); index++) {
             String id = this.items.get(index).getId();
-            Item fItem = findById(id);
-            if (fItem != null && item.getId().equals(id)) {
+            if (item.getId() != null && item.getId().equals(id)) {
                 this.items.add(index, item);
                 break;
             }
@@ -58,9 +57,8 @@ public class Tracker {
     public void delete(Item item) {
         for (int index = 0; index != this.items.size(); index++) {
             String id = this.items.get(index).getId();
-            //Item fItem = findById(id);
             if (item.getId() != null && item.getId().equals(id)) {
-                this.items.remove(item);
+                this.items.remove(index);
                 break;
             }
         }
