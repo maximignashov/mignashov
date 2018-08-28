@@ -1,10 +1,9 @@
 package sort;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.*;
 
 /**
- * Package for class .
+ * Class SortUser.
  *
  * @author Maxim Ignashov (mailto:ignashov.m@icloud.com)
  * @version 1.0
@@ -12,11 +11,7 @@ import java.util.*;
  */
 public class SortUser {
     public Set<User> sort(List<User> list) {
-        Set<User> treeSet = new TreeSet<>();
-        for (User usrLst: list) {
-            treeSet.add(new User(usrLst.getAge(), usrLst.getName()));
-        }
-        return treeSet;
+        return new TreeSet<>(list);
     }
     public List<User> sortNameLength (List<User> list) {
         List<User> userList = new LinkedList<>();
@@ -37,11 +32,6 @@ public class SortUser {
                 return nameSort != 0 ? nameSort : Integer.compare(o1.getAge(), o2.getAge());
             }
         });
-//        userList.sort(new Comparator<User>() {
-//            public int compare(User o1, User o2) {
-//                return o1.getAge() - o2.getAge();
-//            }
-//        });
         return userList;
     }
 }

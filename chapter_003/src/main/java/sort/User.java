@@ -3,7 +3,7 @@ package sort;
 import java.util.List;
 
 /**
- * Package for class .
+ * Class User.
  *
  * @author Maxim Ignashov (mailto:ignashov.m@icloud.com)
  * @version 1.0
@@ -28,7 +28,6 @@ public class User implements Comparable<User> {
 
     @Override
     public int compareTo(User o) {
-        int currentAge = age;
-        return currentAge > o.age ? currentAge : Integer.compare(age, o.age);
+        return Integer.compare(age, o.age);
     }
 }
