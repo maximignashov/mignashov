@@ -13,7 +13,7 @@ public class SortUser {
     public Set<User> sort(List<User> list) {
         return new TreeSet<>(list);
     }
-    public List<User> sortNameLength (List<User> list) {
+    public List<User> sortNameLength(List<User> list) {
         List<User> userList = new LinkedList<>();
         userList.addAll(list);
         userList.sort(new Comparator<User>() {
@@ -23,7 +23,7 @@ public class SortUser {
         });
         return userList;
     }
-    public List<User> sortByAllFields (List<User> list) {
+    public List<User> sortByAllFields(List<User> list) {
         List<User> userList = new LinkedList<>();
         userList.addAll(list);
         userList.sort(new Comparator<User>() {

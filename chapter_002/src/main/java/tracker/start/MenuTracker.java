@@ -168,7 +168,7 @@ public class MenuTracker {
      * @param key int number of menu
      */
     public void select(int key) {
-        this.actions.get(key-1).execute(this.input, this.tracker);
+        this.actions.get(key - 1).execute(this.input, this.tracker);
     }
     /**
      * Show all actions menu.
