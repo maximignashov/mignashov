@@ -22,16 +22,7 @@ public class Department {
      * @return отсортированный список департаментов.
      */
     public final List<String> sortAsc(final List<String> departments) {
-        List<String> toSort = this.recHierarchy(departments);
-        Set<String> sortedSet = new TreeSet<>(new Comparator<String>() {
-            @Override
-            public int compare(final String o1, final String o2) {
-                return o1.compareTo(o2);
-            }
-        });
-        sortedSet.addAll(toSort);
-
-        return sortedSet.stream().collect(Collectors.toList());
+        return this.recHierarchy(departments);
     }
     /**
      * Отсортировать по убыванию.
@@ -45,14 +36,16 @@ public class Department {
             @Override
             public int compare(final String o1, final String o2) {
                 int minimal = Math.min(o1.length(), o2.length());
+                int result = 0;
                 for (int index = 0; index < minimal; index++) {
                     Character leftChar = o1.charAt(index);
                     Character rightChar = o2.charAt(index);
-                    if (rightChar.compareTo(leftChar) != 0) {
-                        return rightChar - leftChar;
+                    result = rightChar.compareTo(leftChar);
+                    if (result != 0) {
+                        break;
                     }
                 }
-                return o1.length() - o2.length();
+                return result == 0 ? o1.length() - o2.length() : result;
             }
         });
         sortedSet.addAll(toSort);
@@ -69,16 +62,10 @@ public class Department {
         Set<String> departmentsSet = new TreeSet<>();
         departmentsSet.addAll(departments);
 
-        ListIterator departmentsIter = departments.listIterator();
-
-        while (departmentsIter.hasNext()) {
-            int i = departmentsIter.nextIndex();
-            String department = (String) departmentsIter.next();
+        for (String department : departments) {
             for (int j = 0; j < department.length(); j++) {
                 if (department.charAt(j) == '\\') {
-                    char[] departmentAsChar = department.toCharArray();
-                    String code = new String(departmentAsChar, 0, j);
-                    departmentsSet.add(code);
+                    departmentsSet.add(department.substring(0, j));
                 }
             }
         }
